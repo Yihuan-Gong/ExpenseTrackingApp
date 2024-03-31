@@ -10,15 +10,14 @@ using 記帳.ChartDataFactory;
 
 namespace 記帳
 {
-    internal class ChartBuilder
+    internal class ChartDataBuilder
     {
         private DateTime startDate;
         private DateTime endDate;
         private ChartType chartType;
         private IEnumerable<ExpenceDataType> expenceDataTypes;
 
-
-        public ChartBuilder SetDateRange(DateTime startDate, DateTime endDate)
+        public ChartDataBuilder SetDateRange(DateTime startDate, DateTime endDate)
         {
             if (startDate > endDate)
             {
@@ -31,40 +30,33 @@ namespace 記帳
             return this;
         }
 
-
-        public ChartBuilder SetGroupByData(IEnumerable<ExpenceDataType> expenceDataTypes)
+        public ChartDataBuilder SetGroupByData(IEnumerable<ExpenceDataType> expenceDataTypes)
         {
             this.expenceDataTypes = expenceDataTypes;
             return this;
         }
 
-
-        public ChartBuilder SetChartType(ChartType chartType)
+        public ChartDataBuilder SetChartType(ChartType chartType)
         {
             this.chartType = chartType;
             return this;
         }
 
-
-
-        public List<ChartData<Tx, Ty>> Build<Tx, Ty>()
+        public object Build()
         {
-
             // 找到所有類型，並過濾出具有指定DisplayName的類別
-            Type classesWithDisplayName = 
+            Type classesWithDisplayName =
                 Assembly.GetExecutingAssembly().GetTypes()
                         .Where(type => type.GetCustomAttributes<DisplayNameAttribute>(false)
-                                           .Any(attr => attr.DisplayName == $"{chartType}"))
+                                           .Any(attr => attr.DisplayName == $"{chartType}Data"))
                         .First();
 
             var factory = (AChartDataFactory)Activator.CreateInstance(classesWithDisplayName, startDate, endDate, chartType, expenceDataTypes);
 
-            return (List<ChartData<Tx, Ty>>)factory.GetChartData();
-
+            return factory.GetChartData();
 
             // 問題
             // 1. 使用者在使用Build的時候必須預先知道他會回傳的type，才能拿到資料
         }
-
     }
 }

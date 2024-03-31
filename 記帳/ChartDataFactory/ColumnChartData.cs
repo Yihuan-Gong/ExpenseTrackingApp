@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace 記帳.ChartDataFactory
 {
-    [DisplayName("Column")]
+    [DisplayName("ColumnData")]
     internal class ColumnChartData : AChartDataFactory
     {
         public ColumnChartData(DateTime start, DateTime end, ChartType chartType, IEnumerable<ExpenceDataType> groupByDataTypes)

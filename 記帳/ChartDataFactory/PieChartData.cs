@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace 記帳.ChartDataFactory
 {
-    [DisplayName("Pie")]
+    [DisplayName("PieData")]
     internal class PieChartData : AChartDataFactory
     {
         public PieChartData(DateTime start, DateTime end, ChartType chartType, IEnumerable<ExpenceDataType> groupByDataTypes)

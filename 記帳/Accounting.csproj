@@ -67,13 +67,19 @@
     <Compile Include="Chart.Designer.cs">
       <DependentUpon>Chart.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChartBuilder.cs" />
+    <Compile Include="ChartDataBuilder.cs" />
     <Compile Include="ChartData.cs" />
     <Compile Include="ChartDataFactory\AChartDataFactory.cs" />
     <Compile Include="ChartDataFactory\ColumnChartData.cs" />
     <Compile Include="ChartDataFactory\LineChartData.cs" />
     <Compile Include="ChartDataFactory\PieChartData.cs" />
+    <Compile Include="ChartDisplayer.cs" />
+    <Compile Include="ChartPloter\AChartPloter.cs" />
+    <Compile Include="ChartPloter\ColumnChartPloter.cs" />
+    <Compile Include="ChartPloter\LineChartPloter.cs" />
+    <Compile Include="ChartPloter\PieChartPloter.cs" />
     <Compile Include="ChartType.cs" />
+    <Compile Include="ChartUserInput.cs" />
     <Compile Include="CsvService.cs" />
     <Compile Include="DateTimeAddMode.cs" />
     <Compile Include="DateTimeExtension.cs" />
@@ -162,5 +168,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
