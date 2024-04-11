@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace 記帳
+namespace Backend
 {
-    internal static class DateTimeExtension
+    public static class DateTimeExtension
     {
         public static DateTime Add(this DateTime dateTime, DateTimeAddMode dateTimeAddMode)
         {

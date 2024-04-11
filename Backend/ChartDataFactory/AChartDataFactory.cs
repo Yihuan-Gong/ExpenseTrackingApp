@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms.DataVisualization.Charting;
 
-namespace 記帳.ChartDataFactory
+namespace Backend.ChartDataFactory
 {
-    internal abstract class AChartDataFactory
+    public abstract class AChartDataFactory
     {
         protected DateTime start;
         protected DateTime end;

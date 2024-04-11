@@ -6,10 +6,10 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace 記帳.ChartDataFactory
+namespace Backend.ChartDataFactory
 {
     [DisplayName("ColumnData")]
-    internal class ColumnChartData : AChartDataFactory
+    public class ColumnChartData : AChartDataFactory
     {
         public ColumnChartData(DateTime start, DateTime end, ChartType chartType, IEnumerable<ExpenceDataType> groupByDataTypes)
             : base(start, end, chartType, groupByDataTypes)

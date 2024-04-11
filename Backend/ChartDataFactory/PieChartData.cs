@@ -7,10 +7,10 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace 記帳.ChartDataFactory
+namespace Backend.ChartDataFactory
 {
     [DisplayName("PieData")]
-    internal class PieChartData : AChartDataFactory
+    public class PieChartData : AChartDataFactory
     {
         public PieChartData(DateTime start, DateTime end, ChartType chartType, IEnumerable<ExpenceDataType> groupByDataTypes)
             : base(start, end, chartType, groupByDataTypes) { }

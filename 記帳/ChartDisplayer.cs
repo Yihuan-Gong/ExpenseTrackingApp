@@ -7,8 +7,8 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms.DataVisualization.Charting;
-using 記帳.ChartDataFactory;
 using 記帳.ChartPloter;
+using Backend;
 
 namespace 記帳
 {
@@ -23,9 +23,22 @@ namespace 記帳
 
         public void Display(ChartUserInput chartUserInput, System.Windows.Forms.DataVisualization.Charting.Chart chart)
         {
+            List<Backend.ExpenceDataType> types = new List<Backend.ExpenceDataType>();
+            foreach (var type in chartUserInput.ExpenceDataTypes)
+            {
+                int temp = (int)type;
+                types.Add((Backend.ExpenceDataType)temp);
+            }
+
+            int chartTypeInt = (int)FrontendBackendChartTypeMapping.GetBackendChartType(chartUserInput.ChartType);
+            Backend.ChartType chartType = (Backend.ChartType)chartTypeInt;
+
+
+
+
             object chartData = chartDataBuilder.SetDateRange(chartUserInput.StartDate, chartUserInput.EndDate)
-                                               .SetGroupByData(chartUserInput.ExpenceDataTypes)
-                                               .SetChartType(FrontendBackendChartTypeMapping.GetBackendChartType(chartUserInput.ChartType))
+                                               .SetGroupByData(types)
+                                               .SetChartType(chartType)
                                                .Build();
 
             AChartPloter chartPloter = GetChartPloter(chartUserInput.ChartType);

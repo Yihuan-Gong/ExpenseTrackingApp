@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -44,6 +45,24 @@ namespace 記帳
             chartTypeComboBox.Items.Add("每年支出折線比較");
 
             chart1.Series.Clear();
+
+
+
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<RecordModel, Backend.RecordModel>()
+                                                           .ForMember(x => x.Type, y => y.MapFrom(o => o.Type)));
+            var mapper = config.CreateMapper();
+
+            var frontendRecord = new RecordModel
+            {
+                Content = "a",
+                Price = "200",
+            };
+
+            var backendRecord = mapper.Map<Backend.RecordModel>(frontendRecord);
+
+
+            // Button btn = (Button)findViewById("button1")
+            // btn.SetText("Hello")
         }
 
         private void AnalyzeBtn_Clicked(object sender, EventArgs e)

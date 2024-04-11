@@ -1,16 +1,15 @@
-﻿using System;
+﻿using Backend.ChartDataFactory;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms.DataVisualization.Charting;
-using 記帳.ChartDataFactory;
 
-namespace 記帳
+namespace Backend
 {
-    internal class ChartDataBuilder
+    public class ChartDataBuilder
     {
         private DateTime startDate;
         private DateTime endDate;

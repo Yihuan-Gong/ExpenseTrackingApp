@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounting", "記帳\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicLambdaExpression", "DynamicLambdaExpression\DynamicLambdaExpression.csproj", "{E719C305-E6B7-4EC9-A37B-203A2390785F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "Backend\Backend.csproj", "{24F62F3E-9090-445B-BF43-A3086DD1C03E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E719C305-E6B7-4EC9-A37B-203A2390785F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E719C305-E6B7-4EC9-A37B-203A2390785F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E719C305-E6B7-4EC9-A37B-203A2390785F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24F62F3E-9090-445B-BF43-A3086DD1C03E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24F62F3E-9090-445B-BF43-A3086DD1C03E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24F62F3E-9090-445B-BF43-A3086DD1C03E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24F62F3E-9090-445B-BF43-A3086DD1C03E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

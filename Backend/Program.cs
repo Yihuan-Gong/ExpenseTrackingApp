@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace 記帳
+namespace Backend
 {
-    internal enum DateTimeAddMode
+    public class Program
     {
-        Day,
-        Week,
-        Month
+        static void Main(string[] args)
+        {
+        }
     }
 }
