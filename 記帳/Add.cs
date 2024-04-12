@@ -27,18 +27,9 @@ namespace 記帳
             TypeComboBox.DisplayMember = "Key";
             TypeComboBox.ValueMember = "Value";
 
-            //TypeComboBox.Items.Add("食");
-            //TypeComboBox.Items.Add("衣");
-            //TypeComboBox.Items.Add("住");
-            //TypeComboBox.Items.Add("行");
-
             ResetPictureBoxAndOpenFileDialog();
         }
 
-        private void Add_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void UploadImageClick(object sender, EventArgs e)
         {
@@ -82,6 +73,10 @@ namespace 記帳
 
             CsvHelper.WriteLineCSV(GetFilePath(FileType.Csv), record);
             ResetPictureBoxAndOpenFileDialog();
+
+            PriceBox.Text = string.Empty;
+            TypeComboBox.SelectedIndex = 0;
+            ContainComboBox.SelectedIndex = 0;
         }
 
 
@@ -133,8 +128,8 @@ namespace 記帳
 
         private void ResetPictureBoxAndOpenFileDialog()
         {
-            PictureBox1.Image = Image.FromFile("D:\\研究所檔案\\軟體開發學習與就業\\軟體開發家教課\\程式碼\\記帳\\記帳\\Asset\\Images\\upload.png");
-            PictureBox2.Image = Image.FromFile("D:\\研究所檔案\\軟體開發學習與就業\\軟體開發家教課\\程式碼\\記帳\\記帳\\Asset\\Images\\upload.png");
+            PictureBox1.Image = Image.FromFile($"{ConfigurationManager.AppSettings["serverDir"]}\\Images\\upload.png");
+            PictureBox2.Image = Image.FromFile($"{ConfigurationManager.AppSettings["serverDir"]}\\Images\\upload.png");
             PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
 

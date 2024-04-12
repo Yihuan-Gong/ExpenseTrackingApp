@@ -183,7 +183,7 @@
             this.AddNewBtn.Name = "AddNewBtn";
             this.AddNewBtn.Size = new System.Drawing.Size(107, 51);
             this.AddNewBtn.TabIndex = 23;
-            this.AddNewBtn.Text = "記帳";
+            this.AddNewBtn.Text = "儲存";
             this.AddNewBtn.UseVisualStyleBackColor = true;
             this.AddNewBtn.Click += new System.EventHandler(this.AddNewBtn_Click);
             // 
@@ -219,7 +219,6 @@
             this.Name = "Add";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add";
-            this.Load += new System.EventHandler(this.Add_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).EndInit();
             this.ResumeLayout(false);

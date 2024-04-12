@@ -22,7 +22,8 @@ namespace 記帳
         const int CONTENT_INDEX = 3;
         const int IMAGE1_COL = 8;
         const int IMAGE2_COL = 9;
-        const int DELETE_BTN_COL = 10;
+        const int EDIT_BTN_COL = 10;
+        const int DELETE_BTN_COL = 11;
 
         public Notebook()
         {
@@ -48,17 +49,54 @@ namespace 記帳
                 imageService = new ImageService(Records);
                 LoadDataGridView();
 
-                for (int i = 0; i < DataGridView1.RowCount; i++)
-                {
-                    DataGridView1.Rows[i].Cells[IMAGE1_COL].Value = imageService.GetThumbnail(i, 1);
-                    DataGridView1.Rows[i].Cells[IMAGE2_COL].Value = imageService.GetThumbnail(i, 2);
-                }
-
                 DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                 DataGridView1.RowHeadersVisible = false;
                 DataGridView1.BackgroundColor = Color.White;
             });
         }
+
+
+        private void CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            switch (e.ColumnIndex)
+            {
+                case IMAGE1_COL:
+                case IMAGE2_COL:
+                    ImageCellClick(sender, e);
+                    break;
+
+                case DELETE_BTN_COL:
+                    DeleteBtnCellClick(sender, e);
+                    break;
+            }
+        }
+
+
+        private void ImageCellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex != IMAGE1_COL && e.ColumnIndex != IMAGE2_COL)
+                return;
+
+            int imageNum = (e.ColumnIndex == IMAGE1_COL) ? 1 : 2;
+            string imagePath = imageService.GetImagePath(e.RowIndex, imageNum);
+
+            if (!string.IsNullOrEmpty(imagePath))
+            {
+                var imageForm = ImageSingletonForm.GetImageForm();
+                imageForm.SetImage(imagePath);
+                imageForm.Show();
+            }
+        }
+
+        private void DeleteBtnCellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex != DELETE_BTN_COL) return;
+
+            Records.RemoveAt(e.RowIndex);
+            CsvService.WriteRecordsToCsv(seletedDate, Records);
+            LoadDataGridView();
+        }
+
 
         private void DataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -78,6 +116,7 @@ namespace 記帳
 
             CsvService.WriteRecordsToCsv(seletedDate, Records);
         }
+
 
         private void DataGridView1_TypeColumnEdited(int rowIndex)
         {
@@ -124,6 +163,7 @@ namespace 記帳
                 ValueMember = "value",
             };
 
+            // 插入Type col = 2、Content col = 3
             DataGridView1.Columns.Insert(TYPE_INDEX, typeComboBoxColumn);
             DataGridView1.Columns.Insert(CONTENT_INDEX, contentComboBoxColumn);
 
@@ -137,51 +177,34 @@ namespace 記帳
 
             }
 
-            DataGridView1.Columns.Insert(IMAGE1_COL, new DataGridViewImageColumn());
-            DataGridView1.Columns.Insert(IMAGE2_COL, new DataGridViewImageColumn());
-            DataGridView1.Columns.Insert(DELETE_BTN_COL, new DataGridViewImageColumn());
+            // 插入Image col = 8, 9 並且載入發票縮圖
+            DataGridView1.Columns.Insert(IMAGE1_COL, new DataGridViewImageColumn { HeaderText = "發票1" });
+            DataGridView1.Columns.Insert(IMAGE2_COL, new DataGridViewImageColumn { HeaderText = "發票2" });
             DataGridView1.Columns["Image1"].Visible = false;
             DataGridView1.Columns["Image2"].Visible = false;
-        }
 
-        private void CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            switch (e.ColumnIndex)
+            for (int i = 0; i < DataGridView1.RowCount; i++)  // 載入發票縮圖
             {
-                case IMAGE1_COL:
-                case IMAGE2_COL:
-                    ImageCellClick(sender, e);
-                    break;
-
-                case DELETE_BTN_COL:
-                    DeleteBtnCellClick(sender, e);
-                    break;
+                DataGridView1.Rows[i].Cells[IMAGE1_COL].Value = imageService.GetThumbnail(i, 1);
+                DataGridView1.Rows[i].Cells[IMAGE2_COL].Value = imageService.GetThumbnail(i, 2);
             }
-        }
 
-        private void ImageCellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex != IMAGE1_COL && e.ColumnIndex != IMAGE2_COL)
-                return;
-
-            int imageNum = (e.ColumnIndex == IMAGE1_COL) ? 1 : 2;
-            string imagePath = imageService.GetImagePath(e.RowIndex, imageNum);
-
-            if (!string.IsNullOrEmpty(imagePath))
+            // 插入edit col = 10
+            DataGridView1.Columns.Insert(EDIT_BTN_COL, new DataGridViewImageColumn
             {
-                var imageForm = ImageSingletonForm.GetImageForm();
-                imageForm.SetImage(imagePath);
-                imageForm.Show();
-            }
-        }
+                HeaderText = "編輯",
+                Image = Image.FromFile($"{ConfigurationManager.AppSettings["serverDir"]}\\Images\\edit.png"),
+                ImageLayout = DataGridViewImageCellLayout.Zoom
+            });
 
-        private void DeleteBtnCellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex != DELETE_BTN_COL) return;
 
-            Records.RemoveAt(e.RowIndex);
-            CsvService.WriteRecordsToCsv(seletedDate, Records);
-            LoadDataGridView();
+            // 插入delete col = 11
+            DataGridView1.Columns.Insert(DELETE_BTN_COL, new DataGridViewImageColumn
+            {
+                HeaderText = "刪除",
+                Image = Image.FromFile($"{ConfigurationManager.AppSettings["serverDir"]}\\Images\\trash.png"),
+                ImageLayout = DataGridViewImageCellLayout.Zoom
+            });
         }
     }
 }

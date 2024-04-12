@@ -42,7 +42,7 @@
             this.DataGridView1.Name = "DataGridView1";
             this.DataGridView1.RowHeadersWidth = 82;
             this.DataGridView1.RowTemplate.Height = 38;
-            this.DataGridView1.Size = new System.Drawing.Size(930, 317);
+            this.DataGridView1.Size = new System.Drawing.Size(1176, 371);
             this.DataGridView1.TabIndex = 2;
             this.DataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellClick);
             this.DataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellEndEdit);
@@ -76,7 +76,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(985, 1054);
+            this.ClientSize = new System.Drawing.Size(1257, 963);
             this.Controls.Add(this.SearchBtn);
             this.Controls.Add(this.DateTimePicker1);
             this.Controls.Add(this.DataGridView1);
