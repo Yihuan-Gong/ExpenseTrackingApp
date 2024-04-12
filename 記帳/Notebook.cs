@@ -16,6 +16,7 @@ namespace 記帳
     public partial class Notebook : Form
     {
         public static List<RecordModel> Records { get; private set; }
+
         ImageService imageService;
         DateTime seletedDate;
         const int TYPE_INDEX = 2;
@@ -38,7 +39,9 @@ namespace 記帳
             Console.WriteLine(e.Exception.Message);
         }
 
-        private void Search_Click(object sender, EventArgs e)
+
+
+        private void Search_Clicked(object sender, EventArgs e)
         {
             this.DebounceHandler(() =>
             {
@@ -47,7 +50,8 @@ namespace 記帳
                 Records = CsvService.GetRecords(seletedDate);
 
                 imageService = new ImageService(Records);
-                LoadDataGridView();
+
+                ReloadDataGridView();
 
                 DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                 DataGridView1.RowHeadersVisible = false;
@@ -56,23 +60,27 @@ namespace 記帳
         }
 
 
-        private void CellClick(object sender, DataGridViewCellEventArgs e)
+        private void CellClicked(object sender, DataGridViewCellEventArgs e)
         {
             switch (e.ColumnIndex)
             {
                 case IMAGE1_COL:
                 case IMAGE2_COL:
-                    ImageCellClick(sender, e);
+                    ImageCellClicked(sender, e);
+                    break;
+
+                case EDIT_BTN_COL:
+                    EditBtnCellClicked(sender, e);
                     break;
 
                 case DELETE_BTN_COL:
-                    DeleteBtnCellClick(sender, e);
+                    DeleteBtnCellClicked(sender, e);
                     break;
             }
         }
 
 
-        private void ImageCellClick(object sender, DataGridViewCellEventArgs e)
+        private void ImageCellClicked(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex != IMAGE1_COL && e.ColumnIndex != IMAGE2_COL)
                 return;
@@ -88,13 +96,30 @@ namespace 記帳
             }
         }
 
-        private void DeleteBtnCellClick(object sender, DataGridViewCellEventArgs e)
+
+        private void EditBtnCellClicked(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex != EDIT_BTN_COL) return;
+
+            var editForm = new Add();
+            editForm.RecordEdited += (s, arg) =>
+            {
+                CsvService.WriteRecordsToCsv(seletedDate, Records);
+                ReloadDataGridView();
+                editForm.Hide();
+            };
+            editForm.Show();
+            editForm.SetBindingRecord(Records[e.RowIndex]);
+        }
+
+
+        private void DeleteBtnCellClicked(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex != DELETE_BTN_COL) return;
 
             Records.RemoveAt(e.RowIndex);
             CsvService.WriteRecordsToCsv(seletedDate, Records);
-            LoadDataGridView();
+            ReloadDataGridView();
         }
 
 
@@ -134,7 +159,7 @@ namespace 記帳
                 .SetValue(Records[rowIndex], contentCell.Value.ToString());
         }
 
-        private void LoadDataGridView()
+        private void ReloadDataGridView()
         {
             DataGridView1.Columns.Clear();
             DataGridView1.DataSource = null;

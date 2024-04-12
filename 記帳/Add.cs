@@ -17,17 +17,36 @@ namespace 記帳
     [DisplayName("記一筆")]
     public partial class Add : Form
     {
+        public event EventHandler RecordEdited;
+
         private OpenFileDialog openFileDialogImage1, openFileDialogImage2;
+        private bool bined = false;
 
         public Add()
         {
             InitializeComponent();
 
-            TypeComboBox.DataSource = AppData.typeList;
-            TypeComboBox.DisplayMember = "Key";
-            TypeComboBox.ValueMember = "Value";
+            typeComboBox.DataSource = AppData.typeList;
+            typeComboBox.DisplayMember = "Key";
+            typeComboBox.ValueMember = "Value";
 
             ResetPictureBoxAndOpenFileDialog();
+        }
+
+
+        public void SetBindingRecord(RecordModel record)
+        {
+            bined = true;
+
+            var updateMode = DataSourceUpdateMode.OnPropertyChanged;
+            //dateTimeBox.DataBindings.Add("Value", record, nameof(record.DateTime), false, updateMode); // ?
+            priceBox.DataBindings.Add("Text", record, nameof(record.Price), false, updateMode);
+            typeComboBox.DataBindings.Add("Text", record, nameof(record.Type), false, updateMode);
+            containComboBox.DataBindings.Add("Text", record, nameof(record.Content), false, updateMode);
+            payMethodComboBox.DataBindings.Add("Text", record, nameof(record.PayMethod), false, updateMode);
+            propertyComboBox.DataBindings.Add("Text", record, nameof(record.Property), false, updateMode);
+            //pictureBox1.DataBindings.Add("Image", record, nameof(record.Image1), false, updateMode); // ?
+            //pictureBox2.DataBindings.Add("Image", record, nameof(record.Image2), false, updateMode); // ?
         }
 
 
@@ -57,16 +76,22 @@ namespace 記帳
 
 
 
-        private void AddNewBtn_Click(object sender, EventArgs e)
+        private void SaveBtn_Click(object sender, EventArgs e)
         {
+            if (bined)
+            {
+                RecordEdited.Invoke(this, null);
+                return;
+            }
+
             var record = new RecordModel
             {
                 DateTime = dateTimeBox.Value.ToString("yyyy-MM-dd"),
-                Price = PriceBox.Text,
-                Type = TypeComboBox.Text,
-                Content = ContainComboBox.Text,
-                PayMethod = PayMethodComboBox.Text,
-                Property = PropertyComboBox.Text,
+                Price = priceBox.Text,
+                Type = typeComboBox.Text,
+                Content = containComboBox.Text,
+                PayMethod = payMethodComboBox.Text,
+                Property = propertyComboBox.Text,
                 Image1 = CopyImageToServer(openFileDialogImage1),
                 Image2 = CopyImageToServer(openFileDialogImage2),
             };
@@ -74,18 +99,18 @@ namespace 記帳
             CsvHelper.WriteLineCSV(GetFilePath(FileType.Csv), record);
             ResetPictureBoxAndOpenFileDialog();
 
-            PriceBox.Text = string.Empty;
-            TypeComboBox.SelectedIndex = 0;
-            ContainComboBox.SelectedIndex = 0;
+            priceBox.Text = string.Empty;
+            typeComboBox.SelectedIndex = 0;
+            containComboBox.SelectedIndex = 0;
         }
 
 
         private void TypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selectedType = ((KeyValuePair<string, string>)TypeComboBox.SelectedItem).Key;
-            ContainComboBox.DataSource = AppData.typeDictionary[selectedType];
-            ContainComboBox.DisplayMember = "key";
-            ContainComboBox.ValueMember = "value";
+            string selectedType = ((KeyValuePair<string, string>)typeComboBox.SelectedItem).Key;
+            containComboBox.DataSource = AppData.typeDictionary[selectedType];
+            containComboBox.DisplayMember = "key";
+            containComboBox.ValueMember = "value";
         }
 
         // Input: 開啟影像的OpenFileDialog
@@ -128,10 +153,10 @@ namespace 記帳
 
         private void ResetPictureBoxAndOpenFileDialog()
         {
-            PictureBox1.Image = Image.FromFile($"{ConfigurationManager.AppSettings["serverDir"]}\\Images\\upload.png");
-            PictureBox2.Image = Image.FromFile($"{ConfigurationManager.AppSettings["serverDir"]}\\Images\\upload.png");
-            PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.Image = Image.FromFile($"{ConfigurationManager.AppSettings["serverDir"]}\\Images\\upload.png");
+            pictureBox2.Image = Image.FromFile($"{ConfigurationManager.AppSettings["serverDir"]}\\Images\\upload.png");
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
 
             openFileDialogImage1 = new OpenFileDialog();
             openFileDialogImage2 = new OpenFileDialog();

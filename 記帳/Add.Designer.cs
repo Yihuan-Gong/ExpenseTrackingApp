@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             this.label3 = new System.Windows.Forms.Label();
-            this.ContainComboBox = new System.Windows.Forms.ComboBox();
+            this.containComboBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.TypeComboBox = new System.Windows.Forms.ComboBox();
+            this.typeComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimeBox = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.PriceBox = new System.Windows.Forms.TextBox();
+            this.priceBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.PayMethodComboBox = new System.Windows.Forms.ComboBox();
+            this.payMethodComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.PropertyComboBox = new System.Windows.Forms.ComboBox();
+            this.propertyComboBox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.PictureBox1 = new System.Windows.Forms.PictureBox();
-            this.PictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.AddNewBtn = new System.Windows.Forms.Button();
             this.navBar1 = new 記帳.NavBar();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -58,13 +58,13 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "消費內容";
             // 
-            // ContainComboBox
+            // containComboBox
             // 
-            this.ContainComboBox.FormattingEnabled = true;
-            this.ContainComboBox.Location = new System.Drawing.Point(172, 223);
-            this.ContainComboBox.Name = "ContainComboBox";
-            this.ContainComboBox.Size = new System.Drawing.Size(222, 32);
-            this.ContainComboBox.TabIndex = 12;
+            this.containComboBox.FormattingEnabled = true;
+            this.containComboBox.Location = new System.Drawing.Point(172, 223);
+            this.containComboBox.Name = "containComboBox";
+            this.containComboBox.Size = new System.Drawing.Size(222, 32);
+            this.containComboBox.TabIndex = 12;
             // 
             // label2
             // 
@@ -75,14 +75,14 @@
             this.label2.TabIndex = 11;
             this.label2.Text = "消費類型";
             // 
-            // TypeComboBox
+            // typeComboBox
             // 
-            this.TypeComboBox.FormattingEnabled = true;
-            this.TypeComboBox.Location = new System.Drawing.Point(172, 163);
-            this.TypeComboBox.Name = "TypeComboBox";
-            this.TypeComboBox.Size = new System.Drawing.Size(222, 32);
-            this.TypeComboBox.TabIndex = 10;
-            this.TypeComboBox.SelectedIndexChanged += new System.EventHandler(this.TypeComboBox_SelectedIndexChanged);
+            this.typeComboBox.FormattingEnabled = true;
+            this.typeComboBox.Location = new System.Drawing.Point(172, 163);
+            this.typeComboBox.Name = "typeComboBox";
+            this.typeComboBox.Size = new System.Drawing.Size(222, 32);
+            this.typeComboBox.TabIndex = 10;
+            this.typeComboBox.SelectedIndexChanged += new System.EventHandler(this.TypeComboBox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -109,12 +109,12 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "金額";
             // 
-            // PriceBox
+            // priceBox
             // 
-            this.PriceBox.Location = new System.Drawing.Point(172, 94);
-            this.PriceBox.Name = "PriceBox";
-            this.PriceBox.Size = new System.Drawing.Size(222, 36);
-            this.PriceBox.TabIndex = 15;
+            this.priceBox.Location = new System.Drawing.Point(172, 94);
+            this.priceBox.Name = "priceBox";
+            this.priceBox.Size = new System.Drawing.Size(222, 36);
+            this.priceBox.TabIndex = 15;
             // 
             // label5
             // 
@@ -125,13 +125,13 @@
             this.label5.TabIndex = 17;
             this.label5.Text = "付款方式";
             // 
-            // PayMethodComboBox
+            // payMethodComboBox
             // 
-            this.PayMethodComboBox.FormattingEnabled = true;
-            this.PayMethodComboBox.Location = new System.Drawing.Point(172, 288);
-            this.PayMethodComboBox.Name = "PayMethodComboBox";
-            this.PayMethodComboBox.Size = new System.Drawing.Size(222, 32);
-            this.PayMethodComboBox.TabIndex = 16;
+            this.payMethodComboBox.FormattingEnabled = true;
+            this.payMethodComboBox.Location = new System.Drawing.Point(172, 288);
+            this.payMethodComboBox.Name = "payMethodComboBox";
+            this.payMethodComboBox.Size = new System.Drawing.Size(222, 32);
+            this.payMethodComboBox.TabIndex = 16;
             // 
             // label6
             // 
@@ -142,13 +142,13 @@
             this.label6.TabIndex = 19;
             this.label6.Text = "消費屬性";
             // 
-            // PropertyComboBox
+            // propertyComboBox
             // 
-            this.PropertyComboBox.FormattingEnabled = true;
-            this.PropertyComboBox.Location = new System.Drawing.Point(172, 349);
-            this.PropertyComboBox.Name = "PropertyComboBox";
-            this.PropertyComboBox.Size = new System.Drawing.Size(222, 32);
-            this.PropertyComboBox.TabIndex = 18;
+            this.propertyComboBox.FormattingEnabled = true;
+            this.propertyComboBox.Location = new System.Drawing.Point(172, 349);
+            this.propertyComboBox.Name = "propertyComboBox";
+            this.propertyComboBox.Size = new System.Drawing.Size(222, 32);
+            this.propertyComboBox.TabIndex = 18;
             // 
             // label7
             // 
@@ -159,23 +159,23 @@
             this.label7.TabIndex = 20;
             this.label7.Text = "發票/收據";
             // 
-            // PictureBox1
+            // pictureBox1
             // 
-            this.PictureBox1.Location = new System.Drawing.Point(23, 496);
-            this.PictureBox1.Name = "PictureBox1";
-            this.PictureBox1.Size = new System.Drawing.Size(210, 284);
-            this.PictureBox1.TabIndex = 21;
-            this.PictureBox1.TabStop = false;
-            this.PictureBox1.Click += new System.EventHandler(this.UploadImageClick);
+            this.pictureBox1.Location = new System.Drawing.Point(23, 496);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(210, 284);
+            this.pictureBox1.TabIndex = 21;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.UploadImageClick);
             // 
-            // PictureBox2
+            // pictureBox2
             // 
-            this.PictureBox2.Location = new System.Drawing.Point(281, 496);
-            this.PictureBox2.Name = "PictureBox2";
-            this.PictureBox2.Size = new System.Drawing.Size(207, 291);
-            this.PictureBox2.TabIndex = 22;
-            this.PictureBox2.TabStop = false;
-            this.PictureBox2.Click += new System.EventHandler(this.UploadImageClick);
+            this.pictureBox2.Location = new System.Drawing.Point(281, 496);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(207, 291);
+            this.pictureBox2.TabIndex = 22;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.UploadImageClick);
             // 
             // AddNewBtn
             // 
@@ -185,7 +185,7 @@
             this.AddNewBtn.TabIndex = 23;
             this.AddNewBtn.Text = "儲存";
             this.AddNewBtn.UseVisualStyleBackColor = true;
-            this.AddNewBtn.Click += new System.EventHandler(this.AddNewBtn_Click);
+            this.AddNewBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
             // navBar1
             // 
@@ -200,27 +200,27 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(522, 1000);
             this.Controls.Add(this.AddNewBtn);
-            this.Controls.Add(this.PictureBox2);
-            this.Controls.Add(this.PictureBox1);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.PropertyComboBox);
+            this.Controls.Add(this.propertyComboBox);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.PayMethodComboBox);
-            this.Controls.Add(this.PriceBox);
+            this.Controls.Add(this.payMethodComboBox);
+            this.Controls.Add(this.priceBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.ContainComboBox);
+            this.Controls.Add(this.containComboBox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.TypeComboBox);
+            this.Controls.Add(this.typeComboBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimeBox);
             this.Controls.Add(this.navBar1);
             this.Name = "Add";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add";
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,20 +230,20 @@
 
         private 記帳.NavBar navBar1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox ContainComboBox;
+        private System.Windows.Forms.ComboBox containComboBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox TypeComboBox;
+        private System.Windows.Forms.ComboBox typeComboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimeBox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox PriceBox;
+        private System.Windows.Forms.TextBox priceBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox PayMethodComboBox;
+        private System.Windows.Forms.ComboBox payMethodComboBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox PropertyComboBox;
+        private System.Windows.Forms.ComboBox propertyComboBox;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.PictureBox PictureBox1;
-        private System.Windows.Forms.PictureBox PictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button AddNewBtn;
     }
 }

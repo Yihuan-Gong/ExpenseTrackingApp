@@ -44,7 +44,7 @@
             this.DataGridView1.RowTemplate.Height = 38;
             this.DataGridView1.Size = new System.Drawing.Size(1176, 371);
             this.DataGridView1.TabIndex = 2;
-            this.DataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellClick);
+            this.DataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellClicked);
             this.DataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellEndEdit);
             // 
             // DateTimePicker1
@@ -62,7 +62,7 @@
             this.SearchBtn.TabIndex = 4;
             this.SearchBtn.Text = "查詢";
             this.SearchBtn.UseVisualStyleBackColor = true;
-            this.SearchBtn.Click += new System.EventHandler(this.Search_Click);
+            this.SearchBtn.Click += new System.EventHandler(this.Search_Clicked);
             // 
             // navBar1
             // 
