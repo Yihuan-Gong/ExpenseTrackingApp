@@ -36,6 +36,10 @@ namespace 記帳
 
         public void SetBindingRecord(RecordModel record)
         {
+            // Input: record從Notebook Form裡面的List<RecordModel>要被編輯的RecordModel來
+            // 這裡要讓record和Add Form裡面的Textbox、Combobox等等UI連動
+            // 但目前DateTime、Image1、Image2無法和record連動
+
             bined = true;
 
             var updateMode = DataSourceUpdateMode.OnPropertyChanged;
@@ -80,6 +84,8 @@ namespace 記帳
         {
             if (bined)
             {
+                // AddForm編輯頁面編輯完成後，也會觸發RecordEdited事件，
+                // 提醒Notebook去將已經連動更新完成的List<RecordModel> 資料放到UI
                 RecordEdited.Invoke(this, null);
                 return;
             }

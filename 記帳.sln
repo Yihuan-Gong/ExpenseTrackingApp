@@ -5,8 +5,6 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounting", "記帳\Accounting.csproj", "{E9DC06BC-20AF-4C1B-8E99-729495630ACE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicLambdaExpression", "DynamicLambdaExpression\DynamicLambdaExpression.csproj", "{E719C305-E6B7-4EC9-A37B-203A2390785F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "Backend\Backend.csproj", "{24F62F3E-9090-445B-BF43-A3086DD1C03E}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{E9DC06BC-20AF-4C1B-8E99-729495630ACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9DC06BC-20AF-4C1B-8E99-729495630ACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9DC06BC-20AF-4C1B-8E99-729495630ACE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E719C305-E6B7-4EC9-A37B-203A2390785F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E719C305-E6B7-4EC9-A37B-203A2390785F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E719C305-E6B7-4EC9-A37B-203A2390785F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E719C305-E6B7-4EC9-A37B-203A2390785F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{24F62F3E-9090-445B-BF43-A3086DD1C03E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{24F62F3E-9090-445B-BF43-A3086DD1C03E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24F62F3E-9090-445B-BF43-A3086DD1C03E}.Release|Any CPU.ActiveCfg = Release|Any CPU

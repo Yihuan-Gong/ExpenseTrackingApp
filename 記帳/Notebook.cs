@@ -101,6 +101,10 @@ namespace 記帳
         {
             if (e.ColumnIndex != EDIT_BTN_COL) return;
 
+            // 當編輯按鈕按下，會讓Notebook(本表單)跳出AddForm編輯頁面
+            // AddForm編輯過程中，資料可以連動改變Notebook裡面的List<RecordModel>，
+            // 並且編輯完成(AddForm的save btn按下後)，通知Notebook把連動更新完成的List<RecordModel>
+            // 渲染到UI
             var editForm = new Add();
             editForm.RecordEdited += (s, arg) =>
             {
